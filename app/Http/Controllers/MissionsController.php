@@ -30,7 +30,7 @@ class MissionsController extends Controller
      */
     public function create()
     {
-        //
+        return view('missions.create');
     }
 
     /**

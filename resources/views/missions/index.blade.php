@@ -13,6 +13,11 @@
 				</li>
 			@endforeach
 		</ul>
+		<p>
+			<a href="{{ route('missions.create') }}" class="btn btn-success">
+				<span class="glyphicon glyphicon-plus"></span> Create Mission
+			</a>
+		</p>
 	</div>
 
 @endsection
