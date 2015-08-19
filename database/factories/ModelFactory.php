@@ -22,8 +22,8 @@ $factory->define(App\User::class, function ($faker) {
 
 $factory->define(App\Mission::class, function ($faker) {
     return [
-        'title' => $faker->words(3),
+        'title' => $faker->sentence(3),
         'description' => $faker->paragraph(1),
-        'filename' => $faker->image(public_path() . "/images/missions"),
+        'filename' => pathinfo($faker->image(public_path() . "/images/missions"), PATHINFO_BASENAME)
     ];
 });
