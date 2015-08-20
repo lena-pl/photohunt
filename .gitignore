@@ -4,3 +4,4 @@ Homestead.yaml
 .env
 public/images/missions
 .DS_Store
+public/system

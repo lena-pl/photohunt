@@ -24,6 +24,6 @@ $factory->define(App\Mission::class, function ($faker) {
     return [
         'title' => $faker->sentence(3),
         'description' => $faker->paragraph(1),
-        'filename' => pathinfo($faker->image(public_path() . "/images/missions"), PATHINFO_BASENAME)
+        'photo' => $faker->imageUrl(1000,1000)
     ];
 });

@@ -5,7 +5,7 @@
 
     <h1 class="text-center">Create a new mission</h1>
 
-    {!! Form::open(['route' => 'missions.store', 'class' => 'form-horizontal']) !!}
+    {!! Form::open(['route' => 'missions.store', 'class' => 'form-horizontal', 'files' => true]) !!}
 
       @if(count($errors) > 0)
         <div class="alert alert-danger text-center">
@@ -25,6 +25,14 @@
         <div class="col-sm-10">
           {!! Form::textarea('description', $mission->description, ['class' => 'form-control']) !!}
           @include('partials.error-help-block', ['field' => 'description'])
+        </div> {{-- /.col-sm-10 --}}
+      </div> {{-- /.form-group --}}
+
+      <div class="form-group {{ $errors->has('photo') ? 'has-error text-danger' : '' }}">
+        <label for="photo" class="col-sm-2 control-label">Answer Photo</label>
+        <div class="col-sm-10">
+          {!! Form::file('photo', ['class' => 'form-control']) !!}
+          @include('partials.error-help-block', ['field' => 'photo'])
         </div> {{-- /.col-sm-10 --}}
       </div> {{-- /.form-group --}}
 
