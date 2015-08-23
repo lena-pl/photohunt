@@ -62,8 +62,9 @@ class MissionsController extends Controller
     public function show($id)
     {
         $mission = Mission::findOrFail($id);
+        $attempts = $mission->attempts()->with('user')->get();
 
-         return view('missions.show', compact('mission'));
+        return view('missions.show', compact('mission', 'attempts'));
     }
 
     /**

@@ -12,8 +12,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
 
-    	$this->rrmdir(public_path() . "/images/missions");
-    	mkdir(public_path() . "/images/missions", 0777, true);
+    	$this->rrmdir(public_path() . "/system");
 
         factory(App\User::class, 5)->create()->each(function ($u) {
             for ($i = 0; $i < 3; $i += 1) {
@@ -30,7 +29,7 @@ class UserTableSeeder extends Seeder
             foreach ($objects as $object) { 
                 if ($object != "." && $object != "..") { 
                     if (filetype($dir."/".$object) == "dir") {
-                        rrmdir($dir."/".$object);
+                        $this->rrmdir($dir."/".$object);
                     } else {
                         unlink($dir."/".$object); 
                     }
