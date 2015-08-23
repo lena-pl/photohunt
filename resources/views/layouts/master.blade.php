@@ -63,6 +63,7 @@
       @if(session("status.$level"))
         <div class="container">
           <div class="alert alert-{{ $level }} text-center">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
             <p>{{ session("status.$level") }}</p>
           </div>
         </div>
