@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Requests\CreateAttemptRequest;
+use App\Http\Requests\UpdateAttemptRequest;
 use App\Http\Controllers\Controller;
 use App\Attempt;
 use App\User;
@@ -39,9 +40,10 @@ class AttemptsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($mission_id, $id)
     {
-        //
+        $attempt = Attempt::findOrFail($id);
+        return view('attempts.edit', compact('attempt'));
     }
 
     /**
@@ -51,9 +53,14 @@ class AttemptsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateAttemptRequest $request, $mission_id, $id)
     {
-        //
+        $attempt = Attempt::findOrFail($id);
+        $attempt->fill($request->all());
+        $attempt->save();
+
+        return redirect()->route('missions.show', $mission_id)
+            ->with('status.success', 'Success! The attempt is now updated!');;
     }
 
     /**
