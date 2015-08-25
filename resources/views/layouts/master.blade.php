@@ -46,15 +46,15 @@
             <li class="{{ Route::currentRouteName() === 'contact' ? 'active' : null }}"><a href="{{ route('contact') }}">Contact</a></li>
           </ul> <!-- /ul -->
 
-          <form class="navbar-form navbar-right" role="form">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form> <!-- /form -->
+          <ul class="nav navbar-nav navbar-right">
+            @if(Auth::check())
+              <li><a href="#">{{ Auth::user()->name }}</a></li>
+              <li><a href="{{ route('auth.logout') }}">Logout</a></li>
+            @else
+              <li><a href="{{ route('auth.register') }}">Register</a></li>
+              <li><a href="{{ route('auth.login') }}">Login</a></li>
+            @endif
+          </ul>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>

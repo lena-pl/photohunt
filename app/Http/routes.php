@@ -11,6 +11,24 @@
 |
 */
 
+// Authentication routes...
+Route::get('auth/login',        ['as' => 'auth.login',      'uses' => 'Auth\AuthController@getLogin']);
+Route::post('auth/login',       ['as' => 'auth.accept',     'uses' => 'Auth\AuthController@postLogin']);
+Route::get('auth/logout',       ['as' => 'auth.logout',     'uses' => 'Auth\AuthController@getLogout']);
+
+// Registration routes...
+Route::get('auth/register',     ['as' => 'auth.register',   'uses' => 'Auth\AuthController@getRegister']);
+Route::post('auth/register',    ['as' => 'auth.store',     'uses' => 'Auth\AuthController@postRegister']);
+
+// Password reset link request routes...
+Route::get('password/email',    ['as' => 'password.email',  'uses' => 'Auth\PasswordController@getEmail']);
+Route::post('password/email',   ['as' => 'password.send',   'uses' => 'Auth\PasswordController@postEmail']);
+
+// Password reset routes...
+Route::get('password/reset/{token}',    ['as' => 'password.reset',  'uses' => 'Auth\PasswordController@getReset']);
+Route::post('password/reset',           ['as' => 'password.accept', 'uses' => 'Auth\PasswordController@postReset']);
+
+// Pages routes...
 Route::get('/',       ['as' => 'home',    'uses' => 'PagesController@home']);
 Route::get('about',   ['as' => 'about',   'uses' => 'PagesController@about']);
 Route::get('contact', ['as' => 'contact', 'uses' => 'PagesController@contact']);
