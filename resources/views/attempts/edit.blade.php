@@ -9,44 +9,48 @@
 
       {!! Form::hidden('_method', 'PUT') !!}
 
-      <div class="form-group {{ $errors->has('photo') ? 'has-error text-danger' : '' }}">
-        <label for="photo" class="col-sm-2 control-label">Attempt Photo</label>
-        <div class="col-sm-10">
-          {!! Form::file('photo', ['class' => 'form-control']) !!}
-          @include('partials.error-help-block', ['field' => 'photo'])
-        </div> {{-- /.col-sm-10 --}}
-      </div> {{-- /.form-group --}}
+      @if(Auth::user()->id === $attempt->user->id)
+        <div class="form-group {{ $errors->has('photo') ? 'has-error text-danger' : '' }}">
+          <label for="photo" class="col-sm-2 control-label">Attempt Photo</label>
+          <div class="col-sm-10">
+            {!! Form::file('photo', ['class' => 'form-control']) !!}
+            @include('partials.error-help-block', ['field' => 'photo'])
+          </div> {{-- /.col-sm-10 --}}
+        </div> {{-- /.form-group --}}
 
-      <div class="form-group">
-      <label class="col-sm-2 control-label">Current Photo</label>
-        <div class="col-sm-10">
-          <p><img src="{{ $attempt->photo->url('thumb') }}" alt="" class="img-rounded"></p>
-        </div>
-      </div>
-
-      <div class="form-group {{ $errors->has('status') ? 'has-error text-danger' : '' }}">
+        <div class="form-group">
         <label class="col-sm-2 control-label">Current Photo</label>
-        <div class="col-sm-10">
-          <p>
-            <label class="checkbox-inline">
-              {!! Form::radio('status', 'success', $attempt->status === 'success') !!} Success
-            </label>
-
-            <label class="checkbox-inline">
-            {!! Form::radio('status', 'almost', $attempt->status === 'almost') !!} Almost
-            </label>
-
-            <label class="checkbox-inline">
-              {!! Form::radio('status', 'miss', $attempt->status === 'miss') !!} Miss
-            </label>
-
-            <label class="checkbox-inline">
-              {!! Form::radio('status', 'unchecked', $attempt->status === 'unchecked') !!} Unchecked
-            </label>
-          </p>
-          @include('partials.error-help-block', ['field' => 'status'])
+          <div class="col-sm-10">
+            <p><img src="{{ $attempt->photo->url('thumb') }}" alt="" class="img-rounded"></p>
+          </div>
         </div>
-      </div>
+      @endif
+
+      @if(Auth::user()->id === $attempt->mission->user->id)
+        <div class="form-group {{ $errors->has('status') ? 'has-error text-danger' : '' }}">
+          <label class="col-sm-2 control-label">Status</label>
+          <div class="col-sm-10">
+            <p>
+              <label class="checkbox-inline">
+                {!! Form::radio('status', 'success', $attempt->status === 'success') !!} Success
+              </label>
+
+              <label class="checkbox-inline">
+              {!! Form::radio('status', 'almost', $attempt->status === 'almost') !!} Almost
+              </label>
+
+              <label class="checkbox-inline">
+                {!! Form::radio('status', 'miss', $attempt->status === 'miss') !!} Miss
+              </label>
+
+              <label class="checkbox-inline">
+                {!! Form::radio('status', 'unchecked', $attempt->status === 'unchecked') !!} Unchecked
+              </label>
+            </p>
+            @include('partials.error-help-block', ['field' => 'status'])
+          </div>
+        </div>
+      @endif
 
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">

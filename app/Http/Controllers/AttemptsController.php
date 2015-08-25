@@ -14,6 +14,10 @@ use App\Mission;
 
 class AttemptsController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -26,7 +30,7 @@ class AttemptsController extends Controller
         $mission = Mission::findOrFail($mission_id);
 
         $attempt = new Attempt($request->all());
-        $attempt->user_id = 1;
+        $attempt->user()->associate($request->user());
         $attempt->mission_id = $mission_id;
 
         $attempt->save();
@@ -56,7 +60,11 @@ class AttemptsController extends Controller
     public function update(UpdateAttemptRequest $request, $mission_id, $id)
     {
         $attempt = Attempt::findOrFail($id);
-        $attempt->fill($request->all());
+        if ($attempt->mission->user->id === $request->user()->id) {
+            $attempt->fill($request->all());
+        } else {
+            $attempt->fill($request->except('status'));
+        }
         $attempt->save();
 
         return redirect()->route('missions.show', $mission_id)

@@ -14,6 +14,11 @@ use App\Mission;
 
 class MissionsController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -46,7 +51,7 @@ class MissionsController extends Controller
     public function store(CreateMissionRequest $request)
     {
         $mission = new Mission($request->all());
-        $mission->user_id = 1;
+        $mission->user()->associate($request->user());
         $mission->save();
 
         return redirect()->route('missions.show', $mission->id)
