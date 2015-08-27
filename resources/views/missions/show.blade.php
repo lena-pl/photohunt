@@ -27,6 +27,20 @@
 
 
     <h2>Attempts — {{ $successTally }} / {{ $attemptTally }} attempts successful</h2>
+    <h3>Successful Users:</h3>
+     @if($missionSuccess)
+     <ul>
+       @foreach( $missionSuccess as $successfulUser )
+
+         <li><a href="/users/{{ $successfulUser->id }}">{{ $successfulUser->name }}</a></li>
+
+       @endforeach
+     </ul>
+     @else
+       <p>No successful users founds</p>
+
+     @endif
+
     <div class="container">
     @foreach($attempts as $attempt)
       @if(Auth::check())
