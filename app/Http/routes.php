@@ -33,9 +33,10 @@ Route::get('profile',            ['as' => 'profile.edit',    'uses' => 'ProfileC
 Route::put('profile',           ['as' => 'profile.update',  'uses' => 'ProfileController@update']);
 
 // Pages routes...
-Route::get('/',       ['as' => 'home',    'uses' => 'PagesController@home']);
-Route::get('about',   ['as' => 'about',   'uses' => 'PagesController@about']);
-Route::get('contact', ['as' => 'contact', 'uses' => 'PagesController@contact']);
+Route::get('/',              ['as' => 'home',    'uses' => 'PagesController@home']);
+Route::get('about',          ['as' => 'about',   'uses' => 'PagesController@about']);
+Route::get('leaderboard',    ['as' => 'leaderboard', 'uses' => 'PagesController@leaders']);
+Route::get('contact',        ['as' => 'contact', 'uses' => 'PagesController@contact']);
 
 Route::resource('missions', 'MissionsController');
 Route::resource('missions.attempts', 'AttemptsController', [ 'only' => ['store', 'update', 'edit', 'destroy'] ]);

@@ -70,7 +70,10 @@ class MissionsController extends Controller
         $mission = Mission::findOrFail($id);
         $attempts = $mission->attempts()->with('user')->get();
 
-        return view('missions.show', compact('mission', 'attempts'));
+        $attemptTally = count($attempts);
+        $successTally = count($mission->attempts()->where('status', 'success')->get());
+
+        return view('missions.show', compact('mission', 'attempts', 'attemptTally', 'successTally'));
     }
 
     /**

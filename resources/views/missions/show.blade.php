@@ -25,9 +25,8 @@
       @endif
     @endif
 
-    @if(Auth::check())
-      <h2>Attempts</h2>
-    @endif
+
+    <h2>Attempts — {{ $successTally }} / {{ $attemptTally }} attempts successful</h2>
     <div class="container">
     @foreach($attempts as $attempt)
       @if(Auth::check())

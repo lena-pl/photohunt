@@ -10,5 +10,27 @@
       </div>
     </div>
 
-    </div> <!-- /container -->  
+    <div class="container">
+      <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Ranking</th>
+                <th>Name</th>
+                <th>Successes</th>
+                <th>Attempts</th>
+            </th>
+        </thead>
+
+        @foreach($leaders as $leader)
+            <tr>
+                <th>{{ $i++ }}</th>
+                <th>{{$leader->name}}</th>
+                <th>{{$leader->success_count}}</th>
+                <th>{{$leader->attempt_count}}</th>
+            </tr>
+        @endforeach
+      </table>
+    </div>
+
+    </div> <!-- /container -->
 @endsection

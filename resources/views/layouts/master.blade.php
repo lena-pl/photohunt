@@ -42,6 +42,7 @@
           <ul class="nav navbar-nav">
             <li class="{{ Route::currentRouteName() === 'home' ? 'active' : null }}"><a href="{{ route('home') }}">Home</a></li>
             <li class="{{ Route::currentRouteName() === 'missions.index' ? 'active' : null }}"><a href="{{ route('missions.index') }}">Missions</a></li>
+            <li class="{{ Route::currentRouteName() === 'leaderboard' ? 'active' : null }}"><a href="{{ route('leaderboard') }}">Leaderboard</a></li>
             <li class="{{ Route::currentRouteName() === 'about' ? 'active' : null }}"><a href="{{ route('about') }}">About</a></li>
             <li class="{{ Route::currentRouteName() === 'contact' ? 'active' : null }}"><a href="{{ route('contact') }}">Contact</a></li>
           </ul> <!-- /ul -->
