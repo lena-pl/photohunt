@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
+
 use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
@@ -61,6 +63,16 @@ class AuthController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+        ]);
+    }
+
+    protected function getEmailAvailable(Request $request)
+    {
+        $user = User::where('email', $request->input('email'))->first();
+        return response()->json([
+            'success' => true,
+            'email' => $request->input('email'),
+            'available' => !(bool)$user,
         ]);
     }
 }

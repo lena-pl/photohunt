@@ -57,7 +57,7 @@
                 <a href="{{ route('missions.attempts.edit', [$mission->id, $attempt->id]) }}" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span> Edit Attempt</a>
 
               @if(Auth::user()->id === $mission->user->id)
-                {!! Form::open(['route' => ['missions.attempts.update', $attempt->mission_id, $attempt->id], 'class' => 'form-horizontal', 'files' => true, 'method' => 'PUT']) !!}
+                {!! Form::open(['route' => ['missions.attempts.update', $attempt->mission_id, $attempt->id], 'class' => 'form-horizontal attempts-update', 'files' => true, 'method' => 'PUT', 'data-attempt-id' => $attempt->id]) !!}
                   <div class="btn-group" role="group" aria-label="Change Status">
                     <button type="submit" class="btn btn-success @include('missions._attempt_active', ['attempt' => $attempt, 'status' => 'success'])" name="status" value="success">Success</button>
                     <button type="submit" class="btn btn-warning @include('missions._attempt_active', ['attempt' => $attempt, 'status' => 'almost'])" name="status" value="almost">Almost</button>

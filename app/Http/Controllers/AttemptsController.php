@@ -67,8 +67,12 @@ class AttemptsController extends Controller
         }
         $attempt->save();
 
-        return redirect()->route('missions.show', $mission_id)
-            ->with('status.success', 'Success! The attempt is now updated!');;
+        if ($request->ajax()) {
+            return response()->json(['success' => true]);
+        } else {
+            return redirect()->route('missions.show', $mission_id)
+                ->with('status.success', 'Success! Your attempt is now updated!');
+        }
     }
 
     /**

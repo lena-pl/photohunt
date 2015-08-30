@@ -3,7 +3,7 @@
 @section('content')
   <div class="container">
 
-    {!! Form::open(['route' => 'auth.store', 'class' => 'form-signin']) !!}
+    {!! Form::open(['route' => 'auth.store', 'class' => 'form-signin', 'id' => 'register']) !!}
 
       <h1>Register New User</h1>
 
@@ -19,7 +19,12 @@
 
       <div class="form-group {{ $errors->has('email') ? 'has-error text-danger' : '' }}">
         <label for="email" class="control-label">Email</label>
-        {!! Form::email('email', old('email'), ['class' => 'form-control']) !!}
+        <div class="input-group">
+          {!! Form::email('email', old('email'), ['class' => 'form-control']) !!}
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-envelope"></span>
+          </span>
+        </div>
         @include('partials.error-help-block', ['field' => 'email'])
       </div>
 

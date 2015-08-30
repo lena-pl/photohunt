@@ -17,8 +17,9 @@ Route::post('auth/login',       ['as' => 'auth.accept',     'uses' => 'Auth\Auth
 Route::get('auth/logout',       ['as' => 'auth.logout',     'uses' => 'Auth\AuthController@getLogout']);
 
 // Registration routes...
-Route::get('auth/register',     ['as' => 'auth.register',   'uses' => 'Auth\AuthController@getRegister']);
-Route::post('auth/register',    ['as' => 'auth.store',     'uses' => 'Auth\AuthController@postRegister']);
+Route::get('auth/register',        ['as' => 'auth.register',   'uses' => 'Auth\AuthController@getRegister']);
+Route::post('auth/register',       ['as' => 'auth.store',     'uses' => 'Auth\AuthController@postRegister']);
+Route::get('auth/email-available', ['as' => 'auth.email-available', 'uses' => 'Auth\AuthController@getEmailAvailable']);
 
 // Password reset link request routes...
 Route::get('password/email',    ['as' => 'password.email',  'uses' => 'Auth\PasswordController@getEmail']);
@@ -29,9 +30,9 @@ Route::get('password/reset/{token}',    ['as' => 'password.reset',  'uses' => 'A
 Route::post('password/reset',           ['as' => 'password.accept', 'uses' => 'Auth\PasswordController@postReset']);
 
 // Profile routes...
-Route::get('profile/show/{id}',      ['as' => 'profile.show',    'uses' => 'ProfileController@show']);
-Route::get('profile/edit',           ['as' => 'profile.edit',    'uses' => 'ProfileController@edit']);
-Route::put('profile/edit',           ['as' => 'profile.update',  'uses' => 'ProfileController@update']);
+Route::get('profile/show/{id}',   ['as' => 'profile.show',    'uses' => 'ProfileController@show']);
+Route::get('profile/edit',        ['as' => 'profile.edit',    'uses' => 'ProfileController@edit']);
+Route::put('profile/edit',        ['as' => 'profile.update',  'uses' => 'ProfileController@update']);
 
 // Pages routes...
 Route::get('/',              ['as' => 'home',    'uses' => 'PagesController@home']);
