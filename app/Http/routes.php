@@ -28,9 +28,10 @@ Route::post('password/email',   ['as' => 'password.send',   'uses' => 'Auth\Pass
 Route::get('password/reset/{token}',    ['as' => 'password.reset',  'uses' => 'Auth\PasswordController@getReset']);
 Route::post('password/reset',           ['as' => 'password.accept', 'uses' => 'Auth\PasswordController@postReset']);
 
-// Profile edit routes...
-Route::get('profile',            ['as' => 'profile.edit',    'uses' => 'ProfileController@edit']);
-Route::put('profile',           ['as' => 'profile.update',  'uses' => 'ProfileController@update']);
+// Profile routes...
+Route::get('profile/show/{id}',      ['as' => 'profile.show',    'uses' => 'ProfileController@show']);
+Route::get('profile/edit',           ['as' => 'profile.edit',    'uses' => 'ProfileController@edit']);
+Route::put('profile/edit',           ['as' => 'profile.update',  'uses' => 'ProfileController@update']);
 
 // Pages routes...
 Route::get('/',              ['as' => 'home',    'uses' => 'PagesController@home']);

@@ -24,7 +24,7 @@
         @foreach($leaders as $leader)
             <tr>
                 <th>{{ $i++ }}</th>
-                <th>{{$leader->name}}</th>
+                <th><a href="{{ route('profile.show', $leader->id) }}">{{$leader->name}}</a></th>
                 <th>{{$leader->success_count}}</th>
                 <th>{{$leader->attempt_count}}</th>
             </tr>

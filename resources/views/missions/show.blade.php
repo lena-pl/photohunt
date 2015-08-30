@@ -32,7 +32,7 @@
      <ul>
        @foreach( $missionSuccess as $successfulUser )
 
-         <li><a href="/users/{{ $successfulUser->id }}">{{ $successfulUser->name }}</a></li>
+         <li><a href="{{ route('profile.show', $successfulUser->id) }}">{{ $successfulUser->name }}</a></li>
 
        @endforeach
      </ul>

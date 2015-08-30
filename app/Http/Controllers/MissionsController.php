@@ -74,7 +74,7 @@ class MissionsController extends Controller
         $attemptTally = count($attempts);
         $successTally = count($mission->attempts()->where('status', 'success')->get());
 
-        $missionSuccess = DB::select('select attempts.*, users.name
+        $missionSuccess = DB::select('select attempts.*, users.name, users.id
             FROM attempts
             JOIN users ON user_id=users.id
             where status = "success" AND mission_id = ?', [$mission->id]);

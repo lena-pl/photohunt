@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use Auth;
+use App\User;
+use App\Mission;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateProfileRequest;
@@ -23,7 +26,15 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $attempts = DB::select('SELECT users.*, mission_id 
+            AS mission_id, status as status, title as mission_title 
+            FROM users 
+            INNER JOIN attempts ON users.id = user_id 
+            INNER JOIN missions ON missions.id = mission_id 
+            WHERE users.id = :user_id', ['user_id' => $user->id]);
+
+        return view('profile.show', compact('user', 'attempts', 'mission'));
     }
 
     /**
