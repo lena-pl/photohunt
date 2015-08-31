@@ -42,3 +42,6 @@ Route::get('contact',        ['as' => 'contact', 'uses' => 'PagesController@cont
 
 Route::resource('missions', 'MissionsController');
 Route::resource('missions.attempts', 'AttemptsController', [ 'only' => ['store', 'update', 'edit', 'destroy'] ]);
+
+// APIs
+Route::get('api/weather',              ['as' => 'api.weather',    'uses' => 'APIController@weather']);

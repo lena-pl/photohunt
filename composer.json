@@ -12,7 +12,8 @@
         "laravelcollective/html": "^5.1",
         "codesleeve/laravel-stapler": "^1.0",
         "guzzlehttp/guzzle": "^6.0",
-        "laravel/socialite": "~2.0"
+        "laravel/socialite": "~2.0",
+        "tumblr/tumblr": "^0.1.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

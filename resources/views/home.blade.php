@@ -11,6 +11,9 @@
     </div>
 
     <div class="container">
+
+      <p class="text-center lead" id="weather"></p>
+
       <table class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -33,4 +36,16 @@
     </div>
 
     </div> <!-- /container -->
+@endsection
+
+@section('scripts')
+  <script>
+    $(function() {
+        $.get('{{ route('api.weather') }}', {}, function(data){
+            console.log(data);
+            var condition = data.query.results.channel.item.condition;
+            $('#weather').text("Current weather for photo-hunting: " + condition.text + " " + condition.temp + "°C");
+        });
+      });
+  </script>
 @endsection
