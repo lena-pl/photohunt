@@ -9,17 +9,6 @@ use Debugbar;
 
 class AppServiceProvider extends ServiceProvider
 {
-    Debugbar::info('Updated Weather from Yahoo API', $condition);
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
-    }
-
     /**
      * Register any application services.
      *

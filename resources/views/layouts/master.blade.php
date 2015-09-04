@@ -73,7 +73,7 @@
       @endif
     @endforeach
 
-    <li><a href="#">WLG: {{ $weatherCondition }} {{ $weatherTemp }}°C</a></li>
+    <p class="text-center lead"><a href="#">WLG: {{ $weatherCondition }} {{ $weatherTemp }}°C</a></p>
 
     @yield('content')
 
