@@ -73,6 +73,8 @@
       @endif
     @endforeach
 
+    <p class="text-center lead"><a href="#">WLG: {{ $weatherCondition }} {{ $weatherTemp }}°C</a></p>
+
     @yield('content')
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
