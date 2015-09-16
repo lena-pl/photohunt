@@ -12,17 +12,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
         <style>
             body {
                 padding-top: 70px;
                 padding-bottom: 20px;
             }
         </style>
-        <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-
-        <script src="{{ asset('js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -46,6 +42,7 @@
             <li class="{{ Route::currentRouteName() === 'leaderboard' ? 'active' : null }}"><a href="{{ route('leaderboard') }}">Leaderboard</a></li>
             <li class="{{ Route::currentRouteName() === 'about' ? 'active' : null }}"><a href="{{ route('about') }}">About</a></li>
             <li class="{{ Route::currentRouteName() === 'contact' ? 'active' : null }}"><a href="{{ route('contact') }}">Contact</a></li>
+            <li><a href="#">WLG: {{ $weatherCondition }} {{ $weatherTemp }}°C</a></li>
           </ul> <!-- /ul -->
 
           <ul class="nav navbar-nav navbar-right">
@@ -73,17 +70,9 @@
       @endif
     @endforeach
 
-    <p class="text-center lead"><a href="#">WLG: {{ $weatherCondition }} {{ $weatherTemp }}°C</a></p>
-
     @yield('content')
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
-    <script>window.jQuery || document.write('<script src="{{ asset('js/vendor/jquery-1.11.2.min.js') }}"><\/script>')</script>
-
-    <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
-
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ elixir('js/all.js') }}"></script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>

@@ -5,3 +5,6 @@ Homestead.yaml
 public/images/missions
 .DS_Store
 public/system
+public/build
+public/css
+public/js

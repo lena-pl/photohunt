@@ -1,2 +1,16 @@
-// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+.form-signin {
+  max-width: 400px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-group.required .control-label:after {
+   content:"*";
+   color:red;
+}
+
+.heading {
+  margin-bottom: 50px;
+}
